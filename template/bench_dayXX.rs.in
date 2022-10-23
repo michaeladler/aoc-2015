@@ -1,0 +1,17 @@
+use criterion::{criterion_group, criterion_main, Criterion};
+
+use aoc2015::aoc_io::{self, Solver};
+use aoc2015::Day${DAY};
+
+fn criterion_benchmark_day${DAY}(c: &mut Criterion) {
+    let input = aoc_io::read_input(${DAY}).unwrap();
+    let mut day${DAY} = Day${DAY}::new();
+    c.bench_function("day${DAY}", |b| b.iter(|| day${DAY}.solve(&input)));
+}
+
+criterion_group!(
+    name = benches;
+    config = Criterion::default().sample_size(10);
+    targets = criterion_benchmark_day${DAY}
+);
+criterion_main!(benches);

@@ -1,0 +1,73 @@
+use log::debug;
+
+use crate::aoc_io::Solver;
+use crate::parse;
+
+#[derive(Debug)]
+pub struct Day${DAY} {}
+
+#[allow(clippy::new_without_default)]
+impl Day${DAY} {
+    pub fn new() -> Self {
+        Self {}
+    }
+}
+
+impl Solver for Day${DAY} {
+    fn day(&self) -> i32 {
+        ${DAY}
+    }
+
+    fn solve(&mut self, input: &[u8]) -> (String, String) {
+        let mut buf = input;
+        while !buf.is_empty() {
+            buf = parse::seek_next_line(buf);
+        }
+
+        let part1: i64 = 42;
+        let part2: i64 = 42;
+
+        (part1.to_string(), part2.to_string())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::aoc_io;
+
+    fn init() {
+        let _ = env_logger::builder().is_test(true).try_init();
+    }
+
+    #[test]
+    #[ignore]
+    fn part1_example() {
+        init();
+
+        let bufs = vec![(b"", 0)];
+
+        for (s, answer) in bufs {
+            assert_eq!(answer.to_string(), Day${DAY}::new().solve(s).0);
+        }
+    }
+
+    #[test]
+    #[ignore]
+    fn part2_example() {
+        let bufs = vec![(b"", 0)];
+
+        for (s, answer) in bufs {
+            assert_eq!(answer.to_string(), Day${DAY}::new().solve(s).1);
+        }
+    }
+
+    #[test]
+    #[ignore]
+    fn part1_and_part2() {
+        let mut d = Day${DAY}::new();
+        let answer = d.solve(&aoc_io::read_input(d.day()).unwrap());
+        assert_eq!("42", answer.0);
+        assert_eq!("42", answer.1);
+    }
+}
