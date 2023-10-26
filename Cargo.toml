@@ -14,18 +14,21 @@ path = "src/main.rs"
 
 [dependencies]
 log = { version = "0.4.0", features = ["release_max_level_warn"] }
-env_logger = { version = "0.9.0", default-features=false, features = ["termcolor", "atty", "humantime"] }
+env_logger = { version = "0.10.0", default-features=false, features = ["auto-color", "humantime"] }
 ahash = "0.8"
 md5 = "0.7.0"
 serde_json = "1.0.79"
 serde = "1.0.136"
 arrayvec = "0.7.2"
-compact_str = "0.6.1"
+compact_str = "0.7.0"
 num-prime = "0.4.1"
 permutator = "0.4.3"
 
+[dependencies.aoc-lib]
+git = "https://github.com/michaeladler/aoc-lib.git"
+
 [dev-dependencies]
-criterion = "0.4"
+criterion = "0.5"
 
 [profile.release]
 # see https://github.com/johnthagen/min-sized-rust
